@@ -1,0 +1,173 @@
+/* ---------- Design tokens: change these to restyle the whole site ---------- */
+:root {
+  --bg: #faf7f2;
+  --text: #1c1b19;
+  --muted: #6b675f;
+  --accent: #d9482b;
+  --line: #e4ded3;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --max: 72rem;
+}
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; font-weight: 400; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem var(--gutter);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; }
+.site-header ul { display: flex; gap: 1.75rem; }
+.site-header nav a {
+  font-size: 0.95rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.site-header nav a:hover { color: var(--accent); }
+
+/* ---------- Layout ---------- */
+.section, .hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) var(--gutter);
+}
+.section h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 2rem;
+}
+
+/* ---------- Hero ---------- */
+.hero { padding-top: clamp(4rem, 12vw, 9rem); }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  max-width: 14ch;
+  font-weight: 600;
+}
+.hero h1 em { color: var(--accent); font-style: italic; font-weight: 400; }
+.lead {
+  max-width: 38rem;
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 1.5rem 0 2rem;
+}
+.button {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border: 1.5px solid var(--text);
+  border-radius: 999px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.button:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ---------- Work grid ---------- */
+.grid {
+  display: grid;
+  gap: 2rem 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+}
+.card h3 { font-size: 1.25rem; margin-top: 0.9rem; }
+.card p { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+.thumb {
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.35s ease;
+}
+.card a:hover .thumb { transform: translateY(-4px); }
+.card a:hover h3 { color: var(--accent); }
+
+/* Placeholder gradients: delete these once you add real images */
+.thumb-1 { background: linear-gradient(135deg, #f6b26b, #d9482b); }
+.thumb-2 { background: linear-gradient(135deg, #9ad0c2, #2f6f73); }
+.thumb-3 { background: linear-gradient(135deg, #cdb4f6, #5b3fa0); }
+.thumb-4 { background: linear-gradient(135deg, #f7d6e0, #c2547a); }
+.thumb-5 { background: linear-gradient(135deg, #bfd7ea, #3d6a9a); }
+.thumb-6 { background: linear-gradient(135deg, #e8e1b0, #8a8a2e); }
+
+/* If you use real <img> tags inside .thumb: */
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- About ---------- */
+.about-body {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+.portrait {
+  aspect-ratio: 4 / 5;
+  max-width: 20rem;
+  border-radius: 6px;
+  background: linear-gradient(160deg, #e4ded3, #c9c1b2);
+}
+.about-body p { margin: 0 0 1rem; max-width: 36rem; font-size: 1.05rem; }
+
+@media (min-width: 48rem) {
+  .about-body { grid-template-columns: 20rem 1fr; gap: 4rem; }
+}
+
+/* ---------- Contact ---------- */
+.contact { border-top: 1px solid var(--line); }
+.contact p { color: var(--muted); margin: 0 0 1rem; }
+.email {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2.75rem);
+  border-bottom: 2px solid var(--accent);
+  transition: color 0.2s;
+}
+.email:hover { color: var(--accent); }
+.socials { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+.socials a { color: var(--muted); }
+.socials a:hover { color: var(--accent); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 2rem var(--gutter);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+.site-footer p { margin: 0; }
+
+/* ---------- Accessibility ---------- */
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
