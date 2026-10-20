@@ -4,123 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jenna Weil — Copywriter</title>
-  <meta name="description" content="Portfolio of Your Name, creative working in design, photography and more.">
+  <meta name="description" content="Portfolio of Jenna Weil, copywriter.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Fraunces + Inter for the site, Poppins for the name on the star -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/home.css">
 </head>
-<body>
+<body class="home">
 
-  <header class="site-header">
-    <a href="#top" class="logo">Your Name</a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <h1 class="sr-only">Jenna Weil, Copywriter</h1>
 
-  <main id="top">
+  <main>
 
-    <!-- HERO -->
+    <!-- THE STAR -->
     <section class="hero">
-      <p class="eyebrow">Designer · Artist · Maker</p>
-      <h1>I make things that feel <em>a little bit alive.</em></h1>
-      <p class="lead">One or two sentences about what you do and who you do it for. Keep it short and specific.</p>
-      <a href="#work" class="button">See my work</a>
+      <svg class="star" viewBox="-640 -460 1280 920" xmlns="http://www.w3.org/2000/svg" aria-label="Navigation star">
+        <defs>
+          <polygon id="star" points="0,-437 108,-188 430,-309 260,-78 608,0 260,78 430,309 108,188 0,437 -108,188 -430,309 -260,78 -608,0 -260,-78 -430,-309 -108,-188"/>
+        </defs>
+
+        <!-- Outer navy layer → Contact -->
+        <a class="layer" href="contact.html" aria-label="Contact">
+          <title>Contact</title>
+          <use href="#star" fill="#26235e" stroke="#000" stroke-width="1.5" stroke-linejoin="round"/>
+        </a>
+
+        <!-- Pink layer → About Me -->
+        <a class="layer" href="about.html" aria-label="About me">
+          <title>About me</title>
+          <use href="#star" fill="#d9308b" transform="scale(0.82)"/>
+        </a>
+
+        <!-- Green layer → My Work -->
+        <a class="layer" href="work.html" aria-label="My work">
+          <title>My work</title>
+          <use href="#star" fill="#9bc760" transform="scale(0.64)"/>
+        </a>
+
+        <!-- White center (not a link) -->
+        <use href="#star" fill="#ffffff" transform="scale(0.49)"/>
+
+        <!-- Layer labels follow the star's upper-right edge -->
+        <g class="labels">
+          <text class="label" fill="#d9308b" transform="translate(181.5 -202) rotate(-20.6)" text-anchor="middle" dominant-baseline="central">CONTACT</text>
+          <text class="label" fill="#9bc760" transform="translate(159.7 -167.1) rotate(-20.6)" text-anchor="middle" dominant-baseline="central">ABOUT ME</text>
+          <text class="label" fill="#26235e" transform="translate(112.5 -125.4) rotate(-20.6)" text-anchor="middle" dominant-baseline="central">MY WORK</text>
+        </g>
+
+        <!-- Name and title: level and centered -->
+        <text class="name" x="0" y="-8" text-anchor="middle">Jenna Weil</text>
+        <text class="title" x="0" y="32" text-anchor="middle">Copywriter</text>
+      </svg>
+
+      <!-- Plain links for small screens, where the star labels get tiny -->
+      <nav class="fallback-nav" aria-label="Main">
+        <a href="work.html">My Work</a>
+        <a href="about.html">About Me</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </section>
 
-    <!-- WORK -->
-    <section id="work" class="section">
-      <h2>Selected work</h2>
-      <div class="grid">
+    <!-- PROJECT THUMBNAILS (same images as the My Work page: put them in an "images" folder) -->
+    <section class="home-work" aria-labelledby="recent-work">
+      <h2 id="recent-work">Recent work</h2>
 
-        <!-- Copy this whole <article> block for each project.
-             Replace the .thumb div with:
-             <img src="images/your-image.jpg" alt="Describe the image"> -->
-        <article class="card">
-          <a href="#">
-            <div class="thumb thumb-1"></div>
-            <h3>Project One</h3>
-            <p>Category · 2026</p>
-          </a>
-        </article>
+      <div class="tiles">
+        <a class="tile tile--green" href="work.html">
+          <div class="thumb thumb--green">
+            <img src="images/project-one.jpg" alt="Project One thumbnail" loading="lazy" onerror="this.remove()">
+          </div>
+          <p class="tile-title">Project One</p>
+          <p class="tile-meta">Brand campaign · 2026</p>
+        </a>
 
-        <article class="card">
-          <a href="#">
-            <div class="thumb thumb-2"></div>
-            <h3>Project Two</h3>
-            <p>Category · 2025</p>
-          </a>
-        </article>
+        <a class="tile tile--pink" href="work.html">
+          <div class="thumb thumb--pink">
+            <img src="images/project-two.jpg" alt="Project Two thumbnail" loading="lazy" onerror="this.remove()">
+          </div>
+          <p class="tile-title">Project Two</p>
+          <p class="tile-meta">Website copy · 2025</p>
+        </a>
 
-        <article class="card">
-          <a href="#">
-            <div class="thumb thumb-3"></div>
-            <h3>Project Three</h3>
-            <p>Category · 2025</p>
-          </a>
-        </article>
+        <a class="tile tile--navy" href="work.html">
+          <div class="thumb thumb--navy">
+            <img src="images/project-three.jpg" alt="Project Three thumbnail" loading="lazy" onerror="this.remove()">
+          </div>
+          <p class="tile-title">Project Three</p>
+          <p class="tile-meta">Email series · 2025</p>
+        </a>
 
-        <article class="card">
-          <a href="#">
-            <div class="thumb thumb-4"></div>
-            <h3>Project Four</h3>
-            <p>Category · 2024</p>
-          </a>
-        </article>
+        <a class="tile tile--green" href="work.html">
+          <div class="thumb thumb--green">
+            <img src="images/project-four.jpg" alt="Project Four thumbnail" loading="lazy" onerror="this.remove()">
+          </div>
+          <p class="tile-title">Project Four</p>
+          <p class="tile-meta">Product descriptions · 2024</p>
+        </a>
 
-        <article class="card">
-          <a href="#">
-            <div class="thumb thumb-5"></div>
-            <h3>Project Five</h3>
-            <p>Category · 2024</p>
-          </a>
-        </article>
+        <a class="tile tile--pink" href="work.html">
+          <div class="thumb thumb--pink">
+            <img src="images/project-five.jpg" alt="Project Five thumbnail" loading="lazy" onerror="this.remove()">
+          </div>
+          <p class="tile-title">Project Five</p>
+          <p class="tile-meta">Social campaign · 2024</p>
+        </a>
 
-        <article class="card">
-          <a href="#">
-            <div class="thumb thumb-6"></div>
-            <h3>Project Six</h3>
-            <p>Category · 2023</p>
-          </a>
-        </article>
-
+        <a class="tile tile--navy" href="work.html">
+          <div class="thumb thumb--navy">
+            <img src="images/project-six.jpg" alt="Project Six thumbnail" loading="lazy" onerror="this.remove()">
+          </div>
+          <p class="tile-title">Project Six</p>
+          <p class="tile-meta">Long-form article · 2023</p>
+        </a>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section about">
-      <h2>About</h2>
-      <div class="about-body">
-        <div class="portrait" role="img" aria-label="Portrait placeholder"></div>
-        <div>
-          <p>Write a short, human bio here. Where you're based, what you care about, what your process looks like, and what kind of projects you want more of.</p>
-          <p>Add a second paragraph if you like: past clients, exhibitions, tools you love.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact">
-      <h2>Let's work together</h2>
-      <p>Open for commissions and collaborations.</p>
-      <a class="email" href="mailto:you@example.com">you@example.com</a>
-      <ul class="socials">
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Behance</a></li>
-        <li><a href="#">LinkedIn</a></li>
-      </ul>
+      <a class="see-all" href="work.html">See all work →</a>
     </section>
 
   </main>
 
-  <footer class="site-footer">
-    <p>© 2026 Your Name</p>
-  </footer>
+  <footer class="site-footer"><p>© 2026 Jenna Weil</p></footer>
 
 </body>
 </html>
